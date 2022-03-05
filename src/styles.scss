@@ -1,1 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "ll-icon-font";
+  src: url(./assets/fonts/ll-icon-font/ll-icon-font.ttf) format("truetype");
+}
+
+@font-face {
+  font-family: "ff-daxline-pro";
+  src: url(./assets/fonts/ff-daxline-pro/200/normal.ttf) format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ff-daxline-pro";
+  src: url(./assets/fonts/ff-daxline-pro/400/normal.ttf) format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ff-daxline-pro";
+  src: url(./assets/fonts/ff-daxline-pro/500/normal.ttf) format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ff-daxline-pro";
+  src: url(./assets/fonts/ff-daxline-pro/700/normal.ttf) format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ff-daxline-pro";
+  src: url(./assets/fonts/ff-daxline-pro/800/normal.ttf) format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "ff-daxline-pro";
+  src: url(./assets/fonts/ff-daxline-pro/900/normal.ttf) format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "ff-daxline-pro";
+}
