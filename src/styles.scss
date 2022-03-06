@@ -46,8 +46,18 @@
   font-style: normal;
 }
 
+:root {
+  --main-color: blue;
+  --color-casino-base: #131B2F80;
+  --color-ui-casino-01: #ffffff;
+  --color-ui-casino-02: #b6b7c0;
+  --color-ui-casino-03: #747885;
+  --gradient-brand: red yellow;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: "ff-daxline-pro";
+  position: absolute;
 }

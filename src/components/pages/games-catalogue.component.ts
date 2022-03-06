@@ -10,40 +10,33 @@ export class GamesCatalogue extends LitElement {
     :host {
       display: block;
     }
-    .card {
-      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.5);
-      max-width: 160px;
-    }
-    .card-content {
-      padding: 10px;
+
+    .game-item {
+      width: 350px;
+      height: 150px;
+      margin: 7px;
+      width: 432px;
+      height: 138px;
+
+      background-color: var(--color-casino-base);
+
+      border-radius: 6px;
     }
   `;
 
-  user?: any = {
-    id: 0,
-    fullName: 'Luis Aviles',
-    role: 'Software Engineer',
-  };
-
   render() {
-    if (this.user === undefined) {
-      return '';
-    }
-
     return html`
-      <div class="card">
-        <h3>games-catalogue</h3>
-        ${Object.values(gamesData).map(
-          (game) => html`
-            <game-item .game="${new Game(game)}" @edit=${this.edit}></game-item>
-          `
-        )}
-      </div>
+      <h3>games-catalogue</h3>
+      ${Object.values(gamesData).map(
+        (game) => html`
+          <game-item
+            class="game-item"
+            .game="${new Game(game)}"
+            @edit=${this.edit}
+          ></game-item>
+        `
+      )}
     `;
-  }
-
-  connectedCallback() {
-    super.connectedCallback();
   }
 
   private edit(event: CustomEvent) {
