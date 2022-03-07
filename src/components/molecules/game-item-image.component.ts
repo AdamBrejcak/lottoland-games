@@ -1,5 +1,4 @@
-import { LitElement, html, css } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { LitElement, html, customElement, css, property } from 'lit-element';
 
 @customElement('game-item-image')
 export class GameItemImage extends LitElement {
@@ -34,6 +33,9 @@ export class GameItemImage extends LitElement {
     }
   `;
 
+  @property({ type: Boolean }) mouseOver?: boolean;
+
+
   render() {
     return html`
       <div class="game-image">
@@ -42,8 +44,15 @@ export class GameItemImage extends LitElement {
           src="https://www.lanescarlisle.co.uk/wp-content/uploads/2016/06/Game-Logo-960x300.jpg"
           }
         />
-        <span class="game-image-info information">&#88</span>
+        ${this.mouseOver}
+        ${this.mouseOver
+          ? html` <span class="game-image-info">&#88</span>`
+          : html``}
       </div>
     `;
+  }
+
+  update(changedProperties: Map<string, unknown>) {
+    super.update(changedProperties);
   }
 }

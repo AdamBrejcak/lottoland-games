@@ -1,5 +1,4 @@
-import { LitElement, html, css } from 'lit';
-import { property, customElement } from 'lit/decorators.js';
+import { LitElement, html, customElement, css, property } from 'lit-element';
 
 @customElement('game-item-details-name')
 export class GameItemDetailsName extends LitElement {
@@ -9,7 +8,7 @@ export class GameItemDetailsName extends LitElement {
     }
     .game-name {
       position: static;
-      height: 21px;
+      min-height: 21px;
       left: 0px;
       right: 0px;
       top: 23px;

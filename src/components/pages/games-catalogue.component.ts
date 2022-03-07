@@ -1,5 +1,10 @@
-import { LitElement, html, css } from 'lit';
-import { customElement } from 'lit/decorators.js';
+import {
+  LitElement,
+  html,
+  customElement,
+  css,
+  internalProperty,
+} from 'lit-element';
 import '../organisms/game-item.component';
 import gamesData from '../../assets/gamesData.js';
 import { Game } from 'src/assets/models/game';
@@ -11,17 +16,6 @@ export class GamesCatalogue extends LitElement {
       display: block;
     }
 
-    .game-item {
-      width: 350px;
-      height: 150px;
-      margin: 7px;
-      width: 432px;
-      height: 138px;
-
-      background-color: var(--color-casino-base);
-
-      border-radius: 6px;
-    }
   `;
 
   render() {
@@ -30,7 +24,6 @@ export class GamesCatalogue extends LitElement {
       ${Object.values(gamesData).map(
         (game) => html`
           <game-item
-            class="game-item"
             .game="${new Game(game)}"
             @edit=${this.edit}
           ></game-item>

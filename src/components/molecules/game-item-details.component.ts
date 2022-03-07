@@ -1,5 +1,4 @@
-import { LitElement, html, css } from 'lit';
-import { property, customElement } from 'lit/decorators.js';
+import { LitElement, html, customElement, css, property } from 'lit-element';
 import { Game } from 'src/assets/models/game';
 import '../atoms/game-item-details-name.component';
 import '../atoms/game-item-details-provider.component';

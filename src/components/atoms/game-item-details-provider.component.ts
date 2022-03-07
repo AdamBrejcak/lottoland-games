@@ -1,5 +1,4 @@
-import { LitElement, html, css } from 'lit';
-import { property, customElement } from 'lit/decorators.js';
+import { LitElement, html, customElement, css, property } from 'lit-element';
 
 @customElement('game-item-details-provider')
 export class GameItemDetailsProvider extends LitElement {

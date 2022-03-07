@@ -1,5 +1,11 @@
-import { LitElement, html, css } from 'lit';
-import { property, customElement } from 'lit/decorators.js';
+import {
+  LitElement,
+  html,
+  customElement,
+  css,
+  property,
+  internalProperty,
+} from 'lit-element';
 import { Game } from 'src/assets/models/game';
 import '../molecules/game-item-details.component';
 import '../molecules/game-item-image.component';
@@ -16,6 +22,10 @@ export class GameItem extends LitElement {
       flex-direction: row;
       width: 432px;
       height: 138px;
+
+      margin: 7px;
+
+      border-radius: 6px;
     }
     .play-game {
       position: absolute;
@@ -28,6 +38,8 @@ export class GameItem extends LitElement {
       box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.16);
       border-radius: 4px;
       border: none;
+
+      cursor: pointer;
     }
     .play-game-text {
       font-style: normal;
@@ -39,7 +51,7 @@ export class GameItem extends LitElement {
 
     .game-details {
       height: fit-content;
-      width: fit-content;
+      max-width: 150px;
       margin: auto 24px;
     }
     .game-image {
@@ -50,6 +62,7 @@ export class GameItem extends LitElement {
   `;
 
   @property({ type: Object }) game?: Game;
+  @internalProperty() mouseOver: boolean = false;
 
   render() {
     if (this.game === undefined) {
@@ -57,24 +70,37 @@ export class GameItem extends LitElement {
     }
 
     return html`
-      <div class="game-item-content">
-        <game-item-image class="game-image"></game-item-image>
+      <div
+        @mouseenter="${() => (this.mouseOver = true)}"
+        @mouseleave="${() => (this.mouseOver = false)}"
+        style="background-color: ${this.mouseOver
+          ? 'var(--color-casino-base);'
+          : ''}"
+        class="game-item-content"
+      >
+        <game-item-image
+          .mouseOver="${this.mouseOver}"
+          class="game-image"
+        ></game-item-image>
         <game-item-details
           class="game-details"
           .game="${new Game(this.game)}"
         ></game-item-details>
-        <button class="play-game" @click=${this.handleEdit}>
-          <span class="play-game-text"> PLAY </span>
-        </button>
+
+        ${this.mouseOver
+          ? html`<button class="play-game" @click=${this.handleEdit}>
+              <span class="play-game-text"> PLAY </span>
+            </button>`
+          : html``}
       </div>
     `;
   }
 
-  connectedCallback() {
+  connectedCallback(): void {
     super.connectedCallback();
   }
 
-  private handleEdit() {
+  private handleEdit(): void {
     super.connectedCallback();
     this.dispatchEvent(
       new CustomEvent<any>('edit', {
