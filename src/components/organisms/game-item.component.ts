@@ -23,7 +23,7 @@ export class GameItem extends LitElement {
       width: 432px;
       height: 138px;
 
-      margin: 7px;
+      margin: 7px 0;
 
       border-radius: 6px;
     }
@@ -74,11 +74,12 @@ export class GameItem extends LitElement {
         @mouseenter="${() => (this.mouseOver = true)}"
         @mouseleave="${() => (this.mouseOver = false)}"
         style="background-color: ${this.mouseOver
-          ? 'var(--color-casino-base);'
+          ? 'var(--color-casino-base-half-opacity);'
           : ''}"
         class="game-item-content"
       >
         <game-item-image
+          .game="${new Game(this.game)}"
           .mouseOver="${this.mouseOver}"
           class="game-image"
         ></game-item-image>

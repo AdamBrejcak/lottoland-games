@@ -16,14 +16,12 @@ export class GameItemImage extends LitElement {
     }
     .game-image-info {
       font-family: 'll-icon-font';
-
       font-size: 20px;
       font-style: normal;
       font-weight: 400;
       line-height: 22px;
       letter-spacing: 0px;
       text-align: left;
-
       position: absolute;
       width: 21px;
       height: 22px;
@@ -44,7 +42,6 @@ export class GameItemImage extends LitElement {
           src="https://www.lanescarlisle.co.uk/wp-content/uploads/2016/06/Game-Logo-960x300.jpg"
           }
         />
-        ${this.mouseOver}
         ${this.mouseOver
           ? html` <span class="game-image-info">&#88</span>`
           : html``}
