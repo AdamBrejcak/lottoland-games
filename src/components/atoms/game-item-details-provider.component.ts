@@ -7,26 +7,22 @@ export class GameItemDetailsProvider extends LitElement {
       display: block;
     }
     .game-provider {
-      position: static;
       height: 21px;
-      left: 0px;
-      right: 0px;
-      top: 0px;
-
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
       line-height: 21px;
+      margin: 2px 0;
       display: flex;
       align-items: center;
       font-feature-settings: 'pnum' on, 'lnum' on;
       color: var(--color-ui-casino-03);
-
-      flex: none;
-      order: 0;
-      align-self: stretch;
-      flex-grow: 0;
-      margin: 2px 0px;
+    }
+    @media only screen and (max-width: 768px) {
+      .game-provider {
+        font-size: 12px;
+        line-height: 18px;
+      }
     }
   `;
 

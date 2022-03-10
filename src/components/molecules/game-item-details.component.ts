@@ -1,5 +1,5 @@
 import { LitElement, html, customElement, css, property } from 'lit-element';
-import { Game } from 'src/assets/models/game';
+import { Game } from 'src/shared/models/game';
 import '../atoms/game-item-details-name.component';
 import '../atoms/game-item-details-provider.component';
 import '../atoms/game-item-details-stake.component ';
@@ -9,13 +9,6 @@ export class GameItemDetails extends LitElement {
   static styles = css`
     :host {
       display: block;
-    }
-    .card {
-      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.5);
-      max-width: 160px;
-    }
-    .card-content {
-      padding: 10px;
     }
   `;
 

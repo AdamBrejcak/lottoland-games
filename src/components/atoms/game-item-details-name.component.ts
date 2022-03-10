@@ -7,25 +7,21 @@ export class GameItemDetailsName extends LitElement {
       display: block;
     }
     .game-name {
-      position: static;
       min-height: 21px;
-      left: 0px;
-      right: 0px;
-      top: 23px;
-
       font-size: 17px;
       line-height: 21px;
       font-weight: 900;
+      margin: 2px 0;
       font-style: normal;
       color: var(--color-ui-casino-02);
       text-transform: uppercase;
       font-feature-settings: 'pnum' on, 'lnum' on;
-
-      flex: none;
-      order: 1;
-      align-self: stretch;
-      flex-grow: 0;
-      margin: 2px 0px;
+    }
+    @media only screen and (max-width: 768px) {
+      .game-name {
+        font-size: 12px;
+        line-height: 18px;
+      }
     }
   `;
 

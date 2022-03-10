@@ -1,4 +1,10 @@
-import { LitElement, html, customElement, css } from 'lit-element';
+import {
+  LitElement,
+  html,
+  customElement,
+  css,
+  internalProperty,
+} from 'lit-element';
 import '../atoms/game-item-details-name.component';
 import '../atoms/game-item-details-provider.component';
 import '../atoms/game-item-details-stake.component ';
@@ -9,7 +15,6 @@ export class GameItemDropdownSort extends LitElement {
     :host {
       display: block;
     }
-
     .dropbtn {
       height: 32px;
       width: 135px;
@@ -25,12 +30,10 @@ export class GameItemDropdownSort extends LitElement {
       flex-direction: row;
       transition: all 0.5s ease-in-out;
     }
-
     .dropdown {
       position: relative;
       display: inline-block;
     }
-
     .dropdown-content {
       visibility: hidden;
       position: absolute;
@@ -42,6 +45,7 @@ export class GameItemDropdownSort extends LitElement {
       z-index: 1;
     }
     .dropdown-content form {
+      margin: 20px 0;
       display: flex;
       flex-direction: column;
     }
@@ -59,12 +63,10 @@ export class GameItemDropdownSort extends LitElement {
       flex-direction: row;
       align-items: center;
     }
-
     .dropdown-content form span label {
       line-height: 21px;
       width: 169px;
     }
-
     .dropdown-text {
       min-width: 81.5px;
       font-style: normal;
@@ -74,7 +76,6 @@ export class GameItemDropdownSort extends LitElement {
       margin: 5.5px 16px 5.5px 0;
       color: var(--color-ui-casino-02);
     }
-
     .dropdown-icon {
       font-family: 'll-icon-font';
       font-style: normal;
@@ -90,11 +91,9 @@ export class GameItemDropdownSort extends LitElement {
       color: var(--color-ui-casino-02);
       transition: all 0.5s ease-in-out;
     }
-
     .dropdown-icon::before {
       content: '1';
     }
-
     input[type='radio'] {
       -webkit-appearance: none;
       width: 28px;
@@ -105,7 +104,6 @@ export class GameItemDropdownSort extends LitElement {
       box-shadow: 0;
       margin: 0 17.5px 0 38.5px;
     }
-
     input[type='radio']:before {
       content: '';
       display: block;
@@ -117,29 +115,38 @@ export class GameItemDropdownSort extends LitElement {
     input[type='radio']:checked:before {
       background: var(--color-casino-complimentary);
     }
-
     .dropdown:hover .dropdown-content {
-      height: 179px;
+      height: 168px;
       width: 272px;
       visibility: visible;
     }
-
     .dropdown:hover .dropbtn {
       border-radius: 4px 4px 0 0;
       width: 272px;
     }
-
     .dropdown:hover .dropdown-content form span {
       border-radius: 4px 4px 0 0;
       width: 272px;
       margin: 7.5px 0;
       opacity: 1;
     }
-
     .dropdown:hover .dropdown-icon::before {
       content: '2';
     }
   `;
+
+  @internalProperty() sortGamesBy!: string;
+
+  private onChangeSort(u: any): void {
+    this.sortGamesBy = u.target.value;
+    this.dispatchEvent(
+      new CustomEvent('sortGamesChange', {
+        detail: this.sortGamesBy,
+        bubbles: true,
+        composed: true,
+      })
+    );
+  }
 
   render() {
     return html`
@@ -151,24 +158,38 @@ export class GameItemDropdownSort extends LitElement {
         <div class="dropdown-content">
           <form>
             <span>
-              <input type="radio" id="name" name="sort_games" value="name" />
+              <input
+                value="name"
+                type="radio"
+                id="name"
+                name="sort_games"
+                value="name"
+                @change=${this.onChangeSort}
+                ?checked=${this.sortGamesBy === 'name'}
+              />
               <label for="name">Name (A-Z)</label>
             </span>
             <span>
               <input
+                value="stakeMin"
                 type="radio"
                 id="stake_min"
                 name="sort_games"
                 value="stake_min"
+                @change=${this.onChangeSort}
+                ?checked=${this.sortGamesBy === 'stakeMin'}
               />
               <label for="stake_min">Stake (min to max)</label>
             </span>
             <span>
               <input
+                value="stakeMax"
                 type="radio"
                 id="stake_max"
                 name="sort_games"
                 value="stake_max"
+                @change=${this.onChangeSort}
+                ?checked=${this.sortGamesBy === 'stakeMax'}
               />
               <label for="stake_max">Stake (max to min)</label>
             </span>

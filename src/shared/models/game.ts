@@ -18,12 +18,4 @@ export class Game {
     this.provider = data.provider;
     this.volatility = data.volatility;
   }
-
-  //getName(): string {
-  //  return `${this.firstName} ${this.lastName}`;
-  //}
-
-  //getYearlySalary(): number {
-  //  return 12 * this.salary;
-  //}
 }

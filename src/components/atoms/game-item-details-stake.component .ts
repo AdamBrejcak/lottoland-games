@@ -6,29 +6,21 @@ export class GameItemDetailsStake extends LitElement {
     :host {
       display: block;
     }
-    .name {
-      position: static;
+    .game-stake {
       height: 21px;
-      left: 0px;
-      right: 0px;
-      top: 46px;
-
-      font-family: "ff-daxline-pro";
+      font-family: 'ff-daxline-pro';
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
       line-height: 21px;
+      margin: 2px 0;
       color: var(--color-ui-casino-03);
-
-      display: flex;
-      align-items: center;
-      font-feature-settings: 'pnum' on, 'lnum' on;
-
-      flex: none;
-      order: 2;
-      align-self: stretch;
-      flex-grow: 0;
-      margin: 2px 0px;
+    }
+    @media only screen and (max-width: 768px) {
+      .game-stake {
+        font-size: 12px;
+        line-height: 18px;
+      }
     }
   `;
 
@@ -39,6 +31,8 @@ export class GameItemDetailsStake extends LitElement {
       return '';
     }
 
-    return html` <h6 class="name">€ ${this.stake.toFixed(2)} min. Stake</h6> `;
+    return html`
+      <h6 class="game-stake">€ ${this.stake.toFixed(2)} min. Stake</h6>
+    `;
   }
 }
